@@ -13,23 +13,23 @@
 
     <header>
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Serviços</a></li>
-                <li><img src="imagens/barbearia.png" alt="" height="150" width="300"></li>
+                <li><a href="#">Galeria</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
-
+    
         <div class="header_descricao">
             <h1>Bem-vindo</h1>
             <p>Seja bem-vindo ao lugar onde estilo e cuidado se encontram! Nossa barbearia combina tradição e modernidade para oferecer cortes, barba e serviços personalizados, garantindo conforto e uma experiência única para cada cliente.</p>
-            
-
+    
             <button>Agendar</button>
         </div>
     </header>
+    
 
     <!-- Serviços -->
 
@@ -128,5 +128,16 @@
     <script src="js/trocarimagem.js"></script>
     <script src="js/beleza_sem_limites.js"></script>
     <script src="js/experiencia_exclusica.js"></script>
+    <script>
+        // Captura o ícone e o menu
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const menu = document.getElementById('menu');
+
+// Adiciona um evento de clique no ícone de hambúrguer
+hamburgerIcon.addEventListener('click', () => {
+    menu.classList.toggle('menu-active');
+});
+
+    </script>
 </body>
 </html>

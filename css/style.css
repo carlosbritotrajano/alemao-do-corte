@@ -62,6 +62,7 @@ header a{
 
 .servicos{
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
     justify-content: center;
     justify-content: space-evenly;
@@ -178,7 +179,6 @@ button{
 }
 
 
-
 /* Banner Fixo */
 
 .banner-fixo {
@@ -209,7 +209,7 @@ button{
     z-index: 2; /* Garante que o texto fique acima da sobreposição */
     max-width: 800px;
     margin: auto;
-    padding-top: 20%;
+    padding-top: 12%;
     text-align: center;
     opacity: 0; /* Inicialmente invisível */
     transform: translateY(50px); /* Inicialmente deslocado para baixo */
@@ -232,7 +232,6 @@ button{
     line-height: 1.6;
     transition: transform 0.8s ease, opacity 0.8s ease;
 }
-
 
 /* Experiências exclusivas */
 
@@ -320,5 +319,50 @@ button{
     top: 0;
     left: 50%; /* Centraliza verticalmente */
     transform: translateX(-50%);
+    
+}
+
+
+@media(max-width: 1189px){
+    .pessoas {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .pessoas div{
+       max-width: 1200px;
+       margin: 50px auto;
+       
+     }
+
+     .pessoas {
+        padding: 20px;
+    }
+
+     .layout {
+        grid-template-columns: 1fr;
+
+    }
+
+    .servicos2{
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .servicos2 h2, p{
+        text-align: center;
+    }
+
+    .grid-container{
+        margin-top: 100px;
+    }
+    
+}
+
+@media(max-width: 780px){
+    .pessoas div img{
+       display: none;
+    }
     
 }

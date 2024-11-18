@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alemão do Corte</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><img src="imagens/barbearia.png" alt="" height="150" width="300"></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="header_descricao">
+            <h1>Bem-vindo</h1>
+            <p>Seja bem-vindo ao lugar onde estilo e cuidado se encontram! Nossa barbearia combina tradição e modernidade para oferecer cortes, barba e serviços personalizados, garantindo conforto e uma experiência única para cada cliente.</p>
+            
+
+            <button>Agendar</button>
+        </div>
+    </header>
+
+    <!-- Serviços -->
+
+    <h1 class="titulo-servicos">Serviços Disponíveis</h1>
+    <section class="servicos">
+        <div class="servico1" onmouseover="trocarImagemTradicional('imagens/tradicional_preto.png')" onmouseout="trocarImagem('imagens/tradicional_branco.png')">
+            <img id="tradicional-img" src="imagens/tradicional_branco.png" alt="corte tradicional">
+            <h2>Tradicional</h2>
+            <span class="preco">30</span>
+            <button>Agendar</button>
+        </div>
+        <div class="servico2" onmouseover="trocarImagemNavalha('imagens/navalha_preto.png')" onmouseout="trocarImagem('imagens/navalha_branco.png')">
+            <img id="navalha-img" src="imagens/navalha_branco.png" alt="corte com navalha">
+            <h2>Navalha</h2>
+            <span class="preco">40</span>
+            <button>Agendar</button>
+        </div>
+        <div class="servico3" onmouseover="trocarImagemBarba('imagens/barba_preto.png')" onmouseout="trocarImagem('imagens/barba_branco.png')">
+            <img id="barba-img" src="imagens/barba_branco.png" alt="corte de barba">
+            <h2>Barba</h2>
+            <span class="preco">20</span>
+            <button>Agendar</button>
+        </div>
+        <div class="servico4" onmouseover="trocarImagemBigode('imagens/bigode_preto.png')" onmouseout="trocarImagem('imagens/bigode_branco.png')">
+            <img id="bigode-img" src="imagens/bigode_branco.png" alt="corte bigode">
+            <h2>Bigode</h2>
+            <span class="preco">15</span>
+            <button>Agendar</button>
+        </div>
+    </section>
+
+    <!-- Beleza sem Limites -->
+    
+    <section class="pessoas">
+        <div class="p-pessoas">
+            <h2>Beleza sem Limites</h2>
+            <p>Nossa barbearia é um espaço para toda a família! Oferecemos cortes modernos e personalizados para homens que desejam estilo, mulheres que buscam praticidade e crianças que merecem atenção especial em cada detalhe. Com um atendimento acolhedor e profissional, garantimos que todos saiam daqui satisfeitos e com o visual perfeito.</p>
+        </div>
+        <div>
+            <img src="imagens/crianca.jpg" alt="">
+        </div>
+        <div>
+            <img src="imagens/homem.jpg" alt="">
+        </div>
+        <div>
+            <img src="imagens/mulher.jpg" alt="">
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+
+    <section class="banner-fixo">
+        <div>
+            <h2>Sobre Nós</h2>
+            <p>Nossa barbearia é o resultado da paixão por unir estilo, conforto e excelência. Aqui, tradição e modernidade se encontram para oferecer serviços de alta qualidade, como cortes de cabelo, barba, manicure e pedicure.</p>
+            
+            <p>Nosso objetivo é valorizar a beleza masculina enquanto criamos uma experiência única, com um ambiente acolhedor, bebidas selecionadas e momentos de descontração. Mais do que uma barbearia, somos o lugar onde bem-estar e confiança ganham destaque.</p>
+        </div>
+    </section>
+
+    <!-- Experiência Exclusica -->
+
+    <section class="layout">
+        <div class="servicos2">
+            <h2>Experiências Exclusivas</h2>
+            <p>Mais do que uma barbearia, oferecemos uma experiência completa com serviços exclusivos para atender todas as suas necessidades. Descubra tudo o que preparamos para o seu conforto e estilo.</p>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="imagens/barbeiro.png" alt="">
+                <h3>Beleza Pessoal</h3>
+                <p>Cortes de cabelo modernos e cuidados que realçam o seu estilo e confiança.</p>
+            </div>
+        
+            <div class="grid-item">
+                <img src="imagens/lixador-de-unha.png" alt="">
+                <h3>Manicure e Pedicure</h3>
+                <p>Cuidados completos para mãos e pés, garantindo bem-estar e elegância.</p>
+            </div>
+        
+            <div class="grid-item">
+                <img src="imagens/cerveja.png" alt="">
+                <h3>Bebidas</h3>
+                <p>Relaxe com uma seleção especial de cervejas e bebidas enquanto cuida do visual.</p>
+            </div>
+        
+            <div class="grid-item">
+                <img src="imagens/jogo-de-arcade.png" alt="">
+                <h3>Jogos</h3>
+                <p>Divirta-se com jogos clássicos e modernos enquanto espera pelo atendimento.</p>
+            </div>
+        </div>
+        
+    </section>
+
+    <script src="js/trocarimagem.js"></script>
+    <script src="js/beleza_sem_limites.js"></script>
+    <script src="js/experiencia_exclusica.js"></script>
+</body>
+</html>

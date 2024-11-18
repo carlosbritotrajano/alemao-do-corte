@@ -1,0 +1,324 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img{
+    max-width: 100%;
+}
+
+header{
+    width: 100%;
+    background-image: url('../imagens/banner3.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #333;
+}
+
+header ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+header li{
+    margin: 10px 20px;
+    font-size: 20px;
+}
+
+header a{
+    text-decoration: none;
+    color: #333;
+}
+
+.header_descricao{
+   max-width: 600px;
+   margin: 100px auto;
+   text-align: center;
+   font-size: 25px;
+}
+
+.header_descricao h1{
+    margin-bottom: 20px;
+}
+
+.header_descricao p{
+    line-height: 1.2;
+    color: #333; 
+}
+
+.header_descricao button{
+    display: block;
+    background-color:#333; ;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Serviços */
+
+.servicos{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    background-color: #333; 
+    padding: 50px 0px 20px 0px;
+}
+
+.titulo-servicos {
+    font-size: 2.5em;
+    margin: 190px 0px 20px 0px;
+    color: #333; 
+    text-align: center;
+}
+
+.servicos div{
+    height: 370px;
+    width: 250px;
+    border-radius: 5px;
+    color: white;
+}
+
+.servicos div:hover{
+    background-color: white;
+    transition: all 0.3s;
+    color:#333; ;
+}
+
+.servicos div img{
+    padding-top: 50px;
+}
+
+.servicos div h2{
+    padding: 30px 0px;
+    font-size: 18px;
+}
+
+.servico1 .preco::before, 
+.servico2 .preco::before, 
+.servico3 .preco::before, 
+.servico4 .preco::before {
+    content: "R$";
+    font-size: 20px;
+    /* vertical-align: top; */
+    margin-right: 5px;
+}
+
+span{
+    display: block;
+    font-size: 55px;
+}
+
+button{
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    display: none;
+}
+
+.servico1:hover button, 
+.servico2:hover button, 
+.servico3:hover button, 
+.servico4:hover button {
+    display: inline-block;
+    background-color: #333; ;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* Beleza sem limites */
+
+.pessoas {
+    display: grid;
+    grid-template-columns: 650px 1fr 1fr 1fr;
+    padding: 200px 0px;
+}
+
+.p-pessoas {
+    padding: 0px 10px;
+}
+
+.p-pessoas p,
+.p-pessoas h2,
+.p-pessoas button,
+.pessoas img {
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Leve deslocamento para baixo */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Anima opacidade e posição */
+}
+
+.p-pessoas p.visible,
+.p-pessoas h2.visible,
+.p-pessoas button.visible,
+.pessoas img.visible {
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Volta para posição original */
+}
+
+.p-pessoas p {
+    font-size: 20px;
+    line-height: 1.2;
+    color: #333; 
+    margin-top: 20px;
+}
+
+.p-pessoas h2 {
+    font-size: 50px;
+    color: #333; 
+}
+
+
+
+/* Banner Fixo */
+
+.banner-fixo {
+    position: relative;
+    height: 700px;
+    width: 100%;
+    background-image: url('../imagens/banner.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    overflow: hidden;
+}
+
+.banner-fixo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sobreposição escura */
+    z-index: 1; /* Garante que a sobreposição fique atrás do conteúdo */
+}
+
+.banner-fixo div {
+    position: relative;
+    z-index: 2; /* Garante que o texto fique acima da sobreposição */
+    max-width: 800px;
+    margin: auto;
+    padding-top: 20%;
+    text-align: center;
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(50px); /* Inicialmente deslocado para baixo */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Anima a visibilidade e posição */
+}
+
+.banner-fixo:hover div {
+    opacity: 1; /* Torna visível ao passar o mouse */
+    transform: translateY(0); /* Move para a posição original */
+}
+
+.banner-fixo div h2 {
+    margin-bottom: 30px;
+    font-size: 50px;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.banner-fixo div p {
+    font-size: 20px;
+    line-height: 1.6;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+
+/* Experiências exclusivas */
+
+/* Estado inicial (oculto) */
+.layout {
+    opacity: 0;
+    transform: translateY(50px); /* Move para baixo */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Estado visível (aparece suavemente) */
+.layout.show {
+    opacity: 1;
+    transform: translateY(0); /* Move para a posição original */
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    align-items: center;
+    margin: 50px;
+}
+
+.servicos2{
+    max-width: 620px;
+}
+
+.layout .servicos2 h2{
+    font-size: 50px;
+}
+
+.layout .servicos2 p{
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 20px;
+}
+
+
+/* Contêiner do quadrado */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 0; 
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Garante um quadrado perfeito */
+    position: relative;
+}
+
+/* Divisões internas */
+.grid-item {
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.grid-item h3{
+    margin: 20px;
+}
+
+.grid-item p{
+    padding: 0px 20px;
+    line-height: 1.2;
+}
+
+/* Borda no centro (horizontal e vertical) */
+.grid-container::before, 
+.grid-container::after {
+    content: '';
+    position: absolute;
+    background-color: #333; /* Cor da borda */
+}
+
+.grid-container::before {
+    width: 100%; /* Linha horizontal */
+    height: 2px; /* Espessura da linha */
+    top: 50%; /* Centraliza horizontalmente */
+    left: 0;
+    transform: translateY(-50%);
+    
+}
+
+.grid-container::after {
+    width: 2px; /* Linha vertical */
+    height: 100%; /* Altura da linha */
+    top: 0;
+    left: 50%; /* Centraliza verticalmente */
+    transform: translateX(-50%);
+    
+}

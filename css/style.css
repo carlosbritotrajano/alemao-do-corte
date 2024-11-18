@@ -15,13 +15,17 @@ header{
     background-position: center;
     background-size: cover;
     color: #333;
+   
 }
 
 header ul{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    justify-content: space-evenly;
     list-style: none;
+    padding: 50px 100px;
 }
 
 header li{
@@ -324,6 +328,16 @@ button{
 
 
 @media(max-width: 1189px){
+
+    .header_descricao{
+        padding: 0px 20px;
+
+     }
+
+    .servicos div{
+        flex: 1 1 350px;
+    }
+
     .pessoas {
         display: flex;
         flex-wrap: wrap;
@@ -364,5 +378,12 @@ button{
     .pessoas div img{
        display: none;
     }
-    
 }
+
+@media(max-width: 741px){
+    header ul{
+        flex-direction: column;
+    }
+}
+
+

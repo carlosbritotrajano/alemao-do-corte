@@ -14,3 +14,6 @@ threshold: 0.2 // Elemento precisa estar 20% visível
 const elements = document.querySelectorAll('.p-pessoas h2, .p-pessoas p, .p-pessoas button, .pessoas img');
 elements.forEach((el) => observer.observe(el));
 });
+
+
+

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agendamento Barbearia</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#111,#333);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+color:white;
+}
+
+.container{
+background:#1c1c1c;
+max-width:520px;
+width:100%;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:5px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:none;
+font-size:16px;
+}
+
+.servicos{
+margin-top:15px;
+}
+
+.servico{
+display:flex;
+justify-content:space-between;
+background:#111;
+padding:10px;
+border-radius:6px;
+margin-bottom:6px;
+}
+
+.calendario{
+margin-top:20px;
+}
+
+.header-calendario{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.header-calendario button{
+background:#444;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+text-align:center;
+}
+
+th{
+padding:6px;
+color:#bbb;
+}
+
+td{
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+td:hover{
+background:#333;
+}
+
+.diaSelecionado{
+background:#25d366;
+}
+
+.diaBloqueado{
+color:#555;
+cursor:not-allowed;
+}
+
+.horarios{
+margin-top:15px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+}
+
+.horarios button{
+flex:1 0 21%;
+padding:8px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+background:#333;
+color:white;
+}
+
+.horarioSelecionado{
+background:#25d366 !important;
+}
+
+.horarioBloqueado{
+background:#222 !important;
+color:#555;
+cursor:not-allowed;
+}
+
+.resumo{
+margin-top:20px;
+background:#111;
+padding:10px;
+border-radius:6px;
+font-size:14px;
+}
+
+.confirmar{
+margin-top:20px;
+width:100%;
+padding:12px;
+font-size:16px;
+background:#25d366;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.confirmar:hover{
+background:#1ebe5d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Agendar Corte</h1>
+
+<label>Seu nome</label>
+<input type="text" id="nome" placeholder="Digite seu nome">
+
+<label>Serviço</label>
+
+<select id="servico">
+
+<option value="Corte Social - R$30">
+Corte Social - R$30
+</option>
+
+<option value="Degradê - R$40">
+Degradê - R$40
+</option>
+
+<option value="Corte + Barba - R$55">
+Corte + Barba - R$55
+</option>
+
+</select>
+
+<div class="calendario">
+
+<div class="header-calendario">
+
+<button onclick="mudarMes(-1)">◀</button>
+
+<h3 id="mesAno"></h3>
+
+<button onclick="mudarMes(1)">▶</button>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>Dom</th>
+<th>Seg</th>
+<th>Ter</th>
+<th>Qua</th>
+<th>Qui</th>
+<th>Sex</th>
+<th>Sáb</th>
+</tr>
+</thead>
+
+<tbody id="dias"></tbody>
+
+</table>
+
+</div>
+
+<h3 style="margin-top:15px;">Horários</h3>
+
+<div class="horarios" id="horarios"></div>
+
+<div class="resumo" id="resumo">
+Selecione um dia e horário
+</div>
+
+<button class="confirmar" onclick="confirmarAgendamento()">
+Confirmar Agendamento
+</button>
+
+</div>
+
+<script>
+
+const telefoneBarbeiro="5511949339096"
+
+let diaSelecionado=""
+let horario=""
+
+const hoje=new Date()
+
+let mes=hoje.getMonth()
+let ano=hoje.getFullYear()
+
+const meses=[
+"Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+]
+
+function gerarCalendario(){
+
+let primeiroDia=new Date(ano,mes,1).getDay()
+
+let totalDias=new Date(ano,mes+1,0).getDate()
+
+document.getElementById("mesAno").innerText=meses[mes]+" "+ano
+
+let tabela=""
+let dia=1
+
+for(let i=0;i<6;i++){
+
+tabela+="<tr>"
+
+for(let j=0;j<7;j++){
+
+if(i===0 && j<primeiroDia){
+
+tabela+="<td></td>"
+
+}else if(dia>totalDias){
+
+tabela+="<td></td>"
+
+}else{
+
+let dataCelula=new Date(ano,mes,dia)
+
+if(dataCelula<new Date(hoje.getFullYear(),hoje.getMonth(),hoje.getDate())){
+
+tabela+=`<td class="diaBloqueado">${dia}</td>`
+
+}else{
+
+tabela+=`<td onclick="selecionarDia(this,${dia})">${dia}</td>`
+
+}
+
+dia++
+
+}
+
+}
+
+tabela+="</tr>"
+
+}
+
+document.getElementById("dias").innerHTML=tabela
+
+}
+
+function mudarMes(valor){
+
+mes+=valor
+
+if(mes<0){
+mes=11
+ano--
+}
+
+if(mes>11){
+mes=0
+ano++
+}
+
+gerarCalendario()
+
+}
+
+function selecionarDia(el,dia){
+
+document.querySelectorAll("#dias td")
+.forEach(td=>td.classList.remove("diaSelecionado"))
+
+el.classList.add("diaSelecionado")
+
+diaSelecionado=dia
+
+gerarHorarios()
+
+atualizarResumo()
+
+}
+
+function gerarHorarios(){
+
+let container=document.getElementById("horarios")
+
+let html=""
+
+let agora=new Date()
+
+for(let hora=8;hora<20;hora++){
+
+for(let minuto of ["00","30"]){
+
+let h=hora+":"+minuto
+
+let dataHorario=new Date(ano,mes,diaSelecionado,hora,minuto)
+
+if(dataHorario<agora){
+
+html+=`<button class="horarioBloqueado">${h}</button>`
+
+}else{
+
+html+=`<button onclick="selecionarHorario(this,'${h}')">${h}</button>`
+
+}
+
+}
+
+}
+
+container.innerHTML=html
+
+}
+
+function selecionarHorario(btn,h){
+
+document.querySelectorAll("#horarios button")
+.forEach(b=>b.classList.remove("horarioSelecionado"))
+
+btn.classList.add("horarioSelecionado")
+
+horario=h
+
+atualizarResumo()
+
+}
+
+function atualizarResumo(){
+
+if(diaSelecionado && horario){
+
+document.getElementById("resumo").innerText=
+
+"Data: "+diaSelecionado+" de "+meses[mes]+" de "+ano+
+" às "+horario
+
+}
+
+}
+
+function confirmarAgendamento(){
+
+let nome=document.getElementById("nome").value
+let servico=document.getElementById("servico").value
+
+if(!nome || !diaSelecionado || !horario){
+
+alert("Preencha nome, data e horário")
+
+return
+
+}
+
+let mensagem=
+
+"Novo Agendamento:%0A%0A"+
+"Nome: "+nome+"%0A"+
+"Serviço: "+servico+"%0A"+
+"Data: "+diaSelecionado+" de "+meses[mes]+" de "+ano+"%0A"+
+"Horário: "+horario
+
+let url="https://wa.me/"+telefoneBarbeiro+"?text="+mensagem
+
+window.open(url,"_blank")
+
+}
+
+gerarCalendario()
+
+</script>
+
+</body>
+</html>
